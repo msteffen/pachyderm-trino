@@ -26,11 +26,8 @@ RUN chmod +x /usr/local/trino/bin/launcher
 
 # Add link to trino/bin/launcher to $PATH
 ADD ./trino-launcher /usr/local/bin
-ADD ./etc /usr/local/trino/etc
+# Add trino config to image. Trino expects its config files in $INSTALL_PATH/etc by default
+# To change config dir: trino-launcher run --etc-dir=/usr/local/trino/config-or-whatever
+ADD ./trino-config/* /usr/local/trino/etc/
 
-# # Install trino CLI
-# RUN curl -o /usr/local/bin/trinocli -L https://repo1.maven.org/maven2/io/trino/trino-cli/365/trino-cli-365-executable.jar \
-#   && chmod +x /usr/local/bin/trinocli
-
-# TODO: find openjdk docker image base
-# FROM 
+CMD trino-launcher run 
