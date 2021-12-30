@@ -19,4 +19,6 @@ trinocli:
 
 .PHONY: \
 	docker-build-examplehttp \
-	docker-run-examplehttp
+	examplehttp-demo \
+	trinocli
+
