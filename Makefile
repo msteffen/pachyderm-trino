@@ -6,7 +6,7 @@ EXAMPLEHTTP_IMAGE=msteffenpachyderm/trino_examplehttp
 
 docker-build-examplehttp:
 	cd ExampleHttpConnector_image \
-	&& docker build -t $(EXAMPLEHTTP_IMAGE) .
+	&& docker build -f Dockerfile.trino -t $(EXAMPLEHTTP_IMAGE) .
 
 examplehttp-demo: docker-build-examplehttp
 	pachctl create repo data
